@@ -1,7 +1,7 @@
 import { Fame } from "@/types";
 import { Button, useDisclosure } from "@heroui/react";
 import BoxModal from "./BoxModal";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface FameDataProps {
     fames: Fame[]
