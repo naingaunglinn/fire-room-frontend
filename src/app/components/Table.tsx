@@ -63,7 +63,7 @@ const Table = ({fames}:FameDataProps) => {
                             )
                         })) : (
                             <tr className="dark:bg-white dark:text-black bg-black text-white">
-                               <td colSpan={6} className="text-center text-[30px] py-10">Oops! No fame is avaliable yet. Come back tomorrow. </td>                               
+                               <td colSpan={6} className="text-center text-[30px] py-10">Oops! No fame is available yet. Come back tomorrow. </td>                               
                             </tr>
                         )}
                     </tbody>
