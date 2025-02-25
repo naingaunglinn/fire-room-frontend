@@ -6,7 +6,6 @@ import {
     ModalBody,
     ModalFooter,
     Button,
-    useDisclosure,
   } from "@heroui/react";
 
   interface BoxModalProp {
