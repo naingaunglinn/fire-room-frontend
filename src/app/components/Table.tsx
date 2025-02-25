@@ -1,14 +1,22 @@
 import { Fame } from "@/types";
+import { Button, useDisclosure } from "@heroui/react";
+import BoxModal from "./BoxModal";
+import { useEffect, useState } from "react";
 
 interface FameDataProps {
     fames: Fame[]
   }
 
 const Table = ({fames}:FameDataProps) => {
-
     const isFame = fames.length > 0 ? true : false;
+    const [fameData, setFame] = useState<Fame>();
+    const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
-    console.log(fames, "this is table data");
+    const purchaseFame = (data:Fame) => {
+        setFame(data);
+        onOpen();
+    }
+    
     return (
         <div>   
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -49,7 +57,7 @@ const Table = ({fames}:FameDataProps) => {
                                         ${fame.price}
                                     </td>
                                     <td className="px-6 py-4">
-                                        <a href="#" className="font-medium text-orange hover:underline">Add to Cart</a>
+                                        <Button className="font-medium bg-orange text-white hover:underline" radius="none" onPress={() => purchaseFame(fame)}>Purchase</Button>
                                     </td>
                                 </tr>
                             )
@@ -60,6 +68,7 @@ const Table = ({fames}:FameDataProps) => {
                         )}
                     </tbody>
                 </table>
+                <BoxModal isOpen={isOpen} onOpenChange={onOpenChange} fame={fameData} />
             </div>
         </div>
     )
