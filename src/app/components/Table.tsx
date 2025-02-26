@@ -21,8 +21,8 @@ const Table = ({fames}:FameDataProps) => {
         <div>   
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead className="text-xs uppercase bg-gray-50 bg-orange dark:text-white text-black">
-                        <tr>
+                    <thead className="text-xs uppercase bg-gray-50 bg-orange font-bold dark:text-white text-black">
+                        <tr className="">
                             <th scope="col" className="px-6 py-3">
                                 Product name
                             </th>
@@ -50,14 +50,14 @@ const Table = ({fames}:FameDataProps) => {
                                     <td className="px-6 py-4">
                                         {fame.biography}
                                     </td>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-4 font-bold">
                                         {fame.sku}
                                     </td>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-4 font-bold">
                                         ${fame.price}
                                     </td>
                                     <td className="px-6 py-4">
-                                        <Button className="font-medium bg-orange text-white hover:underline" radius="none" onPress={() => purchaseFame(fame)}>Purchase</Button>
+                                        <Button className="font-medium bg-orange text-white hover:underline" radius="none" onPress={() => purchaseFame(fame)}>Add to Cart</Button>
                                     </td>
                                 </tr>
                             )
