@@ -1,4 +1,4 @@
-import { CartData, Fame } from "@/types";
+import { CartData } from "@/types";
 import { TrashIcon } from "@heroicons/react/16/solid";
 import { ShoppingCartIcon } from "@heroicons/react/16/solid";
 import {

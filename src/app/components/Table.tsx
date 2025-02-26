@@ -1,7 +1,5 @@
 import { CartData, Fame } from "@/types";
-import { Button, useDisclosure } from "@heroui/react";
-import BoxModal from "./BoxModal";
-import { useEffect, useState } from "react";
+import { Button } from "@heroui/react";
 
 interface FameDataProps {
     fames: Fame[]
@@ -11,8 +9,6 @@ interface FameDataProps {
 
 const Table = ({fames, setCart, cartData}:FameDataProps) => {
     const isFame = fames.length > 0 ? true : false;
-    // const [fameData, setFameDatas] = useState<Fame[]>([]);
-    // const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
     const addToCart = (data:Fame) => {
         const fameData = {

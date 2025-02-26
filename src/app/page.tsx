@@ -1,5 +1,5 @@
 'use client'
-import { CartData, Fame } from "@/types";
+import { CartData } from "@/types";
 import Description from "./components/Description";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
