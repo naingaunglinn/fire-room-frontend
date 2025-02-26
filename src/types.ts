@@ -40,3 +40,10 @@ export interface Fame {
     price: number,
     sku: number
 }
+
+export interface CartData {
+    id : number,
+    name: string,
+    biography: string,
+    price: number,
+}
