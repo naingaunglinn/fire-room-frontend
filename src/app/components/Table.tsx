@@ -1,21 +1,32 @@
-import { Fame } from "@/types";
+import { CartData, Fame } from "@/types";
 import { Button, useDisclosure } from "@heroui/react";
 import BoxModal from "./BoxModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface FameDataProps {
     fames: Fame[]
+    cartData: CartData[]
+    setCart: (Fame:CartData[]) => void
   }
 
-const Table = ({fames}:FameDataProps) => {
+const Table = ({fames, setCart, cartData}:FameDataProps) => {
     const isFame = fames.length > 0 ? true : false;
-    const [fameData, setFame] = useState<Fame>();
-    const {isOpen, onOpen, onOpenChange} = useDisclosure();
+    // const [fameData, setFameDatas] = useState<Fame[]>([]);
+    // const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
-    const purchaseFame = (data:Fame) => {
-        setFame(data);
-        onOpen();
+    const addToCart = (data:Fame) => {
+        const fameData = {
+            id : data.id,
+            name: data.name,
+            biography: data.biography,
+            price: data.price,
+        }
+        const existingItem = cartData.find(cartItem => cartItem.id === data.id);
+        if (!existingItem) {
+            setCart([...cartData, fameData]);
+        }
     }
+
     
     return (
         <div>   
@@ -57,7 +68,7 @@ const Table = ({fames}:FameDataProps) => {
                                         ${fame.price}
                                     </td>
                                     <td className="px-6 py-4">
-                                        <Button className="font-medium bg-orange text-white hover:underline" radius="none" onPress={() => purchaseFame(fame)}>Add to Cart</Button>
+                                        <Button className="font-medium bg-orange text-white hover:underline" radius="none" onPress={() => addToCart(fame)}>Add to Cart</Button>
                                     </td>
                                 </tr>
                             )
@@ -68,7 +79,7 @@ const Table = ({fames}:FameDataProps) => {
                         )}
                     </tbody>
                 </table>
-                <BoxModal isOpen={isOpen} onOpenChange={onOpenChange} fame={fameData} />
+                {/* <BoxModal isOpen={isOpen} onOpenChange={onOpenChange} fame={fameData} /> */}
             </div>
         </div>
     )

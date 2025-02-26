@@ -1,5 +1,5 @@
 'use client'
-import { Fame } from "@/types";
+import { CartData, Fame } from "@/types";
 import Description from "./components/Description";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -9,10 +9,9 @@ import axios from "@/lib/axios";
 import { useEffect, useState } from "react";
 import CartDrawer from "./components/CartDrawer";
 
-
-
-export default function Home() {
-  const [fameData, setFame] = useState<Fame[]>([])
+export default function Home() { 
+  const [fameData, setFame] = useState<[]>([])
+  const [cartData, setCart] = useState<CartData[]>([])
   
   const fetchFames = async () => {
     try {
@@ -37,8 +36,8 @@ export default function Home() {
         <main className="grid gap-[64px]">
           <Main />
           <Description />
-          <Table fames={fameData} />
-          <CartDrawer />
+          <Table fames={fameData} setCart={setCart} cartData={cartData} />
+          <CartDrawer cartData={cartData} setCart={setCart} />
         </main>
         <Footer />
     </div>
