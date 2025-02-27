@@ -1,4 +1,5 @@
 import { CartData, Fame } from "@/types";
+import { CheckIcon, PlusIcon } from "@heroicons/react/20/solid";
 import { Button } from "@heroui/react";
 
 interface FameDataProps {
@@ -9,7 +10,7 @@ interface FameDataProps {
 
 const Table = ({fames, setCart, cartData}:FameDataProps) => {
     const isFame = fames.length > 0 ? true : false;
-
+    
     const addToCart = (data:Fame) => {
         const fameData = {
             id : data.id,
@@ -21,6 +22,13 @@ const Table = ({fames, setCart, cartData}:FameDataProps) => {
         if (!existingItem) {
             setCart([...cartData, fameData]);
         }
+        fames = fames.map(function(fameData){
+            if(fameData.id === data.id){
+                fameData.inCart = true;
+            }
+            return fameData;
+        })
+        console.log(fames);
     }
 
     
@@ -64,7 +72,15 @@ const Table = ({fames, setCart, cartData}:FameDataProps) => {
                                         ${fame.price}
                                     </td>
                                     <td className="px-6 py-4">
-                                        <Button className="font-medium bg-orange text-white hover:underline" radius="none" onPress={() => addToCart(fame)}>Add to Cart</Button>
+                                            {fame.inCart ? (
+                                                <Button className="font-medium bg-black text-white border-1 border-white hover:underline" isDisabled={fame.inCart} radius="none" onPress={() => addToCart(fame)}>
+                                                    <CheckIcon className="size-5" /> added
+                                                </Button>
+                                            ) : (
+                                                <Button className="font-medium bg-orange text-black hover:underline" isDisabled={fame.inCart} radius="none" onPress={() => addToCart(fame)}>
+                                                    <PlusIcon className="size-5" /> add to cart
+                                                </Button>
+                                            )}
                                     </td>
                                 </tr>
                             )
