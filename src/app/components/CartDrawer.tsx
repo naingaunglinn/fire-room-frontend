@@ -32,7 +32,7 @@ import OrderForm from "./OrderForm";
     const productCount = Object.keys(cartData).length;
     const disable = productCount > 0 ? false : true;
     const totalPrice = cartData.reduce(function(a:number,b:CartData) { return a + Number(b.price) }, 0);
-    const [size, setSize] = useState<DrawerSize['size']>("md");
+    const [size, setSize] = useState<DrawerSize['size']>("xl");
     const drawerTitle = isPurchase ? 'Order Page' : 'Product List';
 
     console.log(totalPrice);
@@ -66,13 +66,17 @@ import OrderForm from "./OrderForm";
           <DrawerContent>
             {(onClose) => (
               <>
-                <DrawerHeader className="flex flex-col gap-1 text-black font-bold">{drawerTitle}</DrawerHeader>
                 {isPurchase ? (
-                  <DrawerBody>
-                    <OrderForm cartData={cartData} setPurchase={setPurchase} handleDrawerOpen={handleDrawerOpen}/>
-                  </DrawerBody>
+                  <>
+                    <DrawerHeader className="flex flex-col gap-1 text-black font-bold text-center text-[30px]">{drawerTitle}</DrawerHeader>
+                    <DrawerBody className="justify-center">
+                      <OrderForm cartData={cartData} setPurchase={setPurchase} handleDrawerOpen={handleDrawerOpen}/>
+                    </DrawerBody>
+                  </>
                 ) : (
-                  <DrawerBody>
+                  <>
+                    <DrawerHeader className="flex flex-col gap-1 text-black font-bold">{drawerTitle}</DrawerHeader>
+                  <DrawerBody className="self-center">
                     {(productCount > 0) ? (cartData && cartData.map(({id,name,price,biography},index) => (
                         <Card key={index} className="max-w-[400px] min-h-[200px] bg-orange">
                           <CardHeader className="flex gap-3">
@@ -97,15 +101,16 @@ import OrderForm from "./OrderForm";
                       )
                     }
                   </DrawerBody>
+                  </>
                 )}
                 {productCount > 0 && (
                 <div className="font-bold">
-                  <div className="w-full flex flex-row gap-2 px-6 py-4 justify-between text-black">
+                  <div className="max-w-[500px] mx-auto flex flex-row gap-2 py-4 justify-between text-black">
                     <p>Total Price</p>
                     <p>${totalPrice}</p>
                   </div>
                   <Divider />
-                  <div className="w-full flex flex-row gap-2 px-6 py-4 justify-between text-black">
+                  <div className="max-w-[500px] mx-auto flex flex-row gap-2 py-4 justify-between text-black">
                     <p>Total Quantity</p>
                     <p>{productCount} Qty</p>
                   </div>
