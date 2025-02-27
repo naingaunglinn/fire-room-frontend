@@ -1,4 +1,4 @@
-import { Fame } from "@/types";
+import { CartData } from "@/types";
 import {
     Modal,
     ModalContent,
@@ -20,7 +20,7 @@ import { FormEvent, useState } from "react";
   interface BoxModalProp {
     isOpen: boolean,
     onOpenChange: (isOpen:boolean) => void
-    fame: Fame | undefined
+    fame: CartData | undefined
   }
   
 const BoxModal = ({isOpen, onOpenChange, fame}:BoxModalProp) => {
@@ -88,7 +88,7 @@ const BoxModal = ({isOpen, onOpenChange, fame}:BoxModalProp) => {
                 </Card>
                 </ModalBody>
                 <ModalFooter>
-                  <Button className="bg-orange text-white" type="submit">
+                  <Button className="bg-orange text-black" type="submit">
                     Submit
                   </Button>
                   <Button color="danger" className="text-red" variant="light" onPress={onClose}>

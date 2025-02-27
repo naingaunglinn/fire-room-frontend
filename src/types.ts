@@ -38,7 +38,8 @@ export interface Fame {
     biography: string,
     achievement: string,
     price: number,
-    sku: number
+    sku: number,
+    inCart: boolean,
 }
 
 export interface CartData {
@@ -46,4 +47,8 @@ export interface CartData {
     name: string,
     biography: string,
     price: number,
+}
+
+export interface DrawerSize {
+    size: "md" | "full" | "xs" | "sm" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | undefined
 }
